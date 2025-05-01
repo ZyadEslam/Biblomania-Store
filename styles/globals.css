@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #231f20;
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #231f20;
+  --primary: rgb(253, 236, 9);
+}
+
+body {
+  color: white;
+  direction: rtl;
+  background-color: var(--bg-color);
+}
+
+.container-card::-webkit-scrollbar,
+.card-details::-webkit-scrollbar {
+  width: 10px;
+}
+.container-card::-webkit-scrollbar-track,
+.card-details::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.container-card::-webkit-scrollbar-thumb,
+.card-details::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 0.5rem;
+}
+
+@layer utilities {
+  .nav-to-sys {
+    @apply bg-gradient-to-r from-black to-100% absolute bottom-[90] left-[150] text-6xl font-extrabold text-gray-100 transition  rounded-l-lg p-5 font-myFont;
+  }
+  .sys-nav {
+    @apply w-[90%] h-[55] bg-[#FDEC09] bg-[url(/assets/images/nav.png)] rounded-b-md;
+  }
+  .input-field {
+    @apply px-4 py-2 rounded text-black border-none outline-none text-lg  disabled:bg-gray-300;
+  }
+  .total-money {
+    @apply hidden;
+  }
+
+  .total-money-conatiner:hover:nth-child(2) .total-money {
+    @apply inline-block;
+  }
+  .option-header {
+    @apply text-3xl font-bold font-myFont;
+  }
+  .option {
+    @apply border-b-4 pb-2 rounded-b mb-4 hover:border-primary;
+  }
+  .btn-primary {
+    @apply bg-primary text-bgColor py-2 font-myFont rounded text-lg hover:opacity-90;
+  }
+  .shipping-state {
+    @apply after:w-4 after:h-4 after:bg-white after:rounded-full after:absolute after:translate-y-[50%] after:mr-2 hover:after:bg-primary cursor-pointer;
+  }
+  .order-card {
+    @apply w-[100%]  min-h-[20%] flex justify-between items-center p-2.5 mt-6 shadow-[0px_0px_.01px_1px_rgb(253,236,255,0.2)]  rounded transition hover:shadow-[0px_0px_.01px_.2px_rgb(253,236,9,0.9)];
+  }
+  .order-data {
+    @apply flex flex-col gap-2;
+  }
+  .order-icons {
+    @apply flex flex-col items-center gap-0;
+  }
+  .order-icons i,
+  .order-icons button {
+    @apply p-3 rounded-full  bg-[rgb(120,120,120,.1)] hover:shadow-[0px_0px_2px_rgb(220,220,220,.8)] cursor-pointer;
+  }
+  .backdrop {
+    @apply fixed top-0 z-0 left-0 w-[100%] h-screen bg-[rgb(0,0,0,.5)];
+  }
+  .card-details {
+    @apply absolute w-[50%] h-fit max-h-[650px] pb-3 overflow-y-scroll z-10 bg-bgColor top-0 left-0 right-0 bottom-0 m-auto rounded-lg;
+    header {
+      @apply m-4 rounded-md h-12 bg-[url(/assets/images/print_card_header.png)] bg-primary bg-center bg-cover bg-no-repeat;
+    }
+    .order-details-data {
+      @apply mx-4 flex flex-col self-end;
+    }
+  }
+}
