@@ -2,7 +2,8 @@
 import React, { Suspense, lazy, useEffect, useState, useContext } from "react";
 const OrderCard = lazy(() => import("@/components/OrderCard"));
 import Skeleton from "./Skeleton";
-import MyContext from "@/utils/MyContext";
+import MyContext from "@/context/MyContext";
+import { getBaseUrl } from "@/utils/utils";
 const OrdersList = ({
   is_orders_viewed,
   searchNameValue,
@@ -17,12 +18,10 @@ const OrdersList = ({
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const ordersResponse = await fetch("http://localhost:3000/api/orders");
+        const ordersResponse = await fetch(`${getBaseUrl()}/api/orders`);
         const ordersData = await ordersResponse.json();
 
-        const paymentsResponse = await fetch(
-          "http://localhost:3000/api/payments"
-        );
+        const paymentsResponse = await fetch(`${getBaseUrl()}/api/payments`);
         const paymentData = await paymentsResponse.json();
 
         setOrders(ordersData);

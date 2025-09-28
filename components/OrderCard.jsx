@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import CardDetails from "./CardDetails";
 import { handleDateFormatting, customRequest } from "@/utils/utils";
-import MyContext from "@/utils/MyContext";
+import MyContext from "@/context/MyContext";
 
 const OrderCard = ({ data, type }) => {
   const [viewDetails, setViewDetails] = useState(false);

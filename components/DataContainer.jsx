@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useContext, useEffect } from "react";
 import { ContainerCard, PairInputs, OrdersList } from ".";
-import MyContext from "@/utils/MyContext";
+import MyContext from "@/context/MyContext";
 
 const DataContainer = () => {
   const [viewedData, setViewedData] = useState("orders");
