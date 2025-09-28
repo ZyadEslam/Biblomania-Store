@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import InputField from "./InputField";
 import { updateDataAction } from "@/app/actions/actions";
 import Form from "next/form";
-import MyContext from "@/utils/MyContext";
+import MyContext from "@/context/MyContext";
 
 const CardDetails = ({ showDetailsToggler, orderData, editable, type }) => {
   const [isDataChanged, setIsDataChanged] = useState(false);

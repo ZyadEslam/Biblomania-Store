@@ -32,10 +32,10 @@ body {
 
 @layer utilities {
   .nav-to-sys {
-    @apply bg-gradient-to-r from-black to-100% absolute bottom-[90] left-[150] text-6xl font-extrabold text-gray-100 transition  rounded-l-lg p-5 font-myFont;
+    @apply bg-gradient-to-r from-black to-100% fixed bottom-[90px] left-[150px] text-6xl font-extrabold text-gray-100 transition rounded-l-lg p-5 font-myFont;
   }
   .sys-nav {
-    @apply w-[90%] h-[55] bg-[#FDEC09] bg-[url(/assets/images/nav.png)] rounded-b-md;
+    @apply w-[90%] h-[55px] bg-[#FDEC09] bg-[url(/assets/images/nav.png)] rounded-b-md;
   }
   .input-field {
     @apply px-4 py-2 rounded text-black border-none outline-none text-lg  disabled:bg-gray-300;

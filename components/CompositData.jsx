@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useContext } from "react";
 import { InputField, PairInputs } from "./";
-import MyContext from "@/utils/MyContext";
+import MyContext from "@/context/MyContext";
 
 const CompositData = ({ type }) => {
   const [data, setData] = useState([0]);

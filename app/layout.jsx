@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import "@/styles/fonts.css";
-import { ContextProvider } from "@/utils/MyContext";
+import { ContextProvider } from "@/context/MyContext";
 
 export const metadata = {
   title: "Biblomania System",

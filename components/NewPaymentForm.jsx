@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import PairInputs from "@/components/PairInputs";
 import Form from "next/form";
 import { newDataSubmissionAction } from "@/app/actions/actions";
-import MyContext from "@/utils/MyContext";
+import MyContext from "@/context/MyContext";
 import { useFormStatus } from "react-dom";
 import { InputField, CompositData } from ".";
 
