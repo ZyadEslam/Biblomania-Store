@@ -1,33 +1,42 @@
 import dbConnect from "@/lib/mongoose";
-import Order from "@/models/order";
-export const DELETE = async (request, { params }) => {
-  const id = (await params).id;
+import OrderRecord from "@/models/orderRecord";
+
+export async function DELETE(_, { params }) {
   try {
     await dbConnect();
-    const existingOrder = await Order.findById(id);
-    if (!existingOrder) {
-      return new Response("Order not found", { status: 404 });
-    } else {
-      await Order.deleteOne(existingOrder);
-      return new Response("Order deleted successfully", { status: 200 });
+    const deletedOrder = await OrderRecord.findByIdAndDelete(params.id);
+
+    if (!deletedOrder) {
+      return Response.json({ message: "Order not found" }, { status: 404 });
     }
+
+    return Response.json({ message: "Order deleted successfully" }, { status: 200 });
   } catch (error) {
-    return new Response(`Couldn't delete the order, ${error}`, { status: 500 });
+    return Response.json(
+      { message: `Couldn't delete the order, ${error.message}` },
+      { status: 500 }
+    );
   }
-};
-export const PATCH = async (request, { params }) => {
-  const id = (await params).id;
-  const updatedOrder = await request.json();
+}
+
+export async function PATCH(request, { params }) {
   try {
     await dbConnect();
-    const existingOrder = await Order.findById(id);
-    if (!existingOrder) {
-      return new Response("Order not found", { status: 404 });
-    } else {
-      await existingOrder.updateOne(updatedOrder);
-      return new Response("Order updated successfully", { status: 200 });
+    const payload = await request.json();
+    const updatedOrder = await OrderRecord.findByIdAndUpdate(params.id, payload, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!updatedOrder) {
+      return Response.json({ message: "Order not found" }, { status: 404 });
     }
+
+    return Response.json(updatedOrder, { status: 200 });
   } catch (error) {
-    return new Response(`Couldn't Update the order, ${error}`, { status: 500 });
+    return Response.json(
+      { message: `Couldn't update the order, ${error.message}` },
+      { status: 500 }
+    );
   }
-};
+}

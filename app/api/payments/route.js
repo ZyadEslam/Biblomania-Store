@@ -1,14 +1,19 @@
 import dbConnect from "@/lib/mongoose";
-import Order from "@/models/order";
-import Payment from "@/models/payment";
+import PaymentRecord from "@/models/paymentRecord";
+
 export async function GET() {
   try {
     await dbConnect();
-    const payments = await Payment.find({});
-    console.log(payments);
-    return new Response(JSON.stringify(payments), { status: 200 });
+    const payments = await PaymentRecord.find({})
+      .sort({ "رقم العمليه": -1 })
+      .lean();
+
+    return Response.json(payments, { status: 200 });
   } catch (error) {
-    console.error("Couldn't fetch the payments");
-    return new Response("Couldn't fetch the payments", { status: 500 });
+    console.error("Couldn't fetch the payments", error);
+    return Response.json(
+      { message: "Couldn't fetch the payments" },
+      { status: 500 }
+    );
   }
 }

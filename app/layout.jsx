@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
 import "@/styles/fonts.css";
-import { ContextProvider } from "@/context/MyContext";
+import AppDataProvider from "@/shared/providers/AppDataProvider";
 
 export const metadata = {
   title: "Biblomania System",
-  description: "This is a Biblomania Ordering System",
+  description: "Biblomania ordering and expenses management system",
 };
 
 export default function RootLayout({ children }) {
@@ -16,8 +16,8 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>
-        <ContextProvider>{children}</ContextProvider>
+      <body className="app-body">
+        <AppDataProvider>{children}</AppDataProvider>
       </body>
     </html>
   );
