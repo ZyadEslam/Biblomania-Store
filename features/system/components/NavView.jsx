@@ -1,42 +1,37 @@
 "use client";
-
-import { memo } from "react";
 import Image from "next/image";
+import { useOrders } from "@/features/orders";
+import { usePayments } from "@/features/payments";
 
-const NavView = ({ ordersCount, ordersTotal, paymentsCount, paymentsTotal }) => {
+const NavView = () => {
+  const { orders, ordersTotal } = useOrders();
+  const { payments, paymentsTotal } = usePayments();
+
   return (
-    <nav className="sys-nav">
-      <div className="brand-shell">
-        <div className="brand-mark">
-          <Image
-            src="/assets/images/nav.png"
-            alt="Biblomania"
-            width={220}
-            height={54}
-            priority
-            className="h-auto w-auto max-w-[180px] sm:max-w-[220px]"
-          />
+    <div className="flex w-full">
+      <nav className="sys-nav w-[100%]">
+        <Image
+          src={"/assets/images/nav.png"}
+          alt="Brand Pattern"
+          className="w-[70%] h-full object-contain"
+          width={800}
+          height={200}
+        />
+        <div className="nav-stats">
+          <article className="nav-stat-card">
+            <span>الأوردرات</span>
+            <strong>{orders.length}</strong>
+            <small>{ordersTotal} جنيه</small>
+          </article>
+          <article className="nav-stat-card">
+            <span>المصروفات</span>
+            <strong>{payments.length}</strong>
+            <small>{paymentsTotal} جنيه</small>
+          </article>
         </div>
-        <div className="brand-copy">
-          <p className="eyebrow">لوحة إدارة Biblomania</p>
-          <h1>نظرة سريعة على الأوردرات والمصروفات</h1>
-        </div>
-      </div>
-
-      <div className="nav-stats">
-        <article className="nav-stat-card">
-          <span>الأوردرات</span>
-          <strong>{ordersCount}</strong>
-          <small>{ordersTotal} جنيه</small>
-        </article>
-        <article className="nav-stat-card">
-          <span>المصروفات</span>
-          <strong>{paymentsCount}</strong>
-          <small>{paymentsTotal} جنيه</small>
-        </article>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 
-export default memo(NavView);
+export default NavView;

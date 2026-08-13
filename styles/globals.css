@@ -22,9 +22,7 @@ html {
 body {
   color: var(--text-color-primary);
   direction: rtl;
-  background:
-    radial-gradient(circle at top right, rgba(253, 236, 9, 0.16), transparent 28%),
-    linear-gradient(180deg, #1f1b1c 0%, #231f20 100%);
+  background: #222222;
 }
 
 .app-body {
@@ -97,7 +95,7 @@ body {
   }
 
   .sys-nav {
-    @apply mb-6 mt-4 flex flex-col gap-5 rounded-[2rem] border border-[color:var(--border-soft)] bg-[linear-gradient(130deg,rgba(253,236,9,0.95)_0%,rgba(253,236,9,0.83)_58%,rgba(255,255,255,0.92)_100%)] p-5 text-[color:var(--bg-color)] shadow-[0_20px_70px_rgba(0,0,0,0.22)] lg:flex-row lg:items-center lg:justify-between;
+    @apply mb-6 mt-4 flex flex-col gap-5 rounded-sm border border-[color:var(--border-soft)] bg-[#FDEC09]  px-5 text-[color:var(--bg-color)] shadow-[0_20px_70px_rgba(0,0,0,0.22)] lg:flex-row lg:items-center lg:justify-end;
   }
 
   .brand-shell {
@@ -113,7 +111,7 @@ body {
   }
 
   .nav-stat-card {
-    @apply min-w-[150px] rounded-[1.4rem] bg-[rgba(35,31,32,0.92)] px-4 py-3 text-white shadow-[0_10px_30px_rgba(0,0,0,0.18)];
+    @apply flex items-center gap-5 rounded-[1.4rem] bg-[rgba(35,31,32,0.92)] px-4 py-3 text-white shadow-[0_10px_30px_rgba(0,0,0,0.18)];
   }
 
   .nav-stat-card span {

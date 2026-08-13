@@ -1,9 +1,9 @@
-import NavContainer from "./NavContainer";
+import NavView from "./NavView";
 
 const SystemLayout = ({ children }) => {
   return (
     <div className="system-shell">
-      <NavContainer />
+      <NavView />
       {children}
     </div>
   );
